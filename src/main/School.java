@@ -1,5 +1,7 @@
 package main;
 
+import main.StudentLinkedList.Iterator;
+
 public class School {
 
     public static void main(String[] args) {
@@ -8,15 +10,25 @@ public class School {
         StudentList list = new StudentLinkedList();
         Teacher teacher = new Teacher("Teacher");
 
-        list.append(new Student("Bob", teacher));
-        list.append(new Student("Jesse", teacher));
-        list.prepend(new Student("Ana", teacher));
+        Student ana = new Student("Ana", teacher);
+        Student bob = new Student("Bob", teacher);
+        Student jesse = new Student("Jesse", teacher);
 
-        // [Ana, Bob, Jesse]
+        list.append(ana);
+        list.append(bob);
+        list.append(jesse);
 
-        System.out.println("Student 0: " + list.getStudentAt(0).getName());
-        System.out.println("Student 1: " + list.getStudentAt(1).getName());
-        System.out.println("Student 2: " + list.getStudentAt(2).getName());
+        System.out.println("Original: " + list);
+        list.removeAt(1);
+        System.out.println("New: " + list);
+        System.out.println();
+
+        Iterator it = list.getIterator();
+        System.out.println("Iterator Current: " + it.getCurrent().getName());
+        it.next();
+        System.out.println("Iterator Current: " + it.getCurrent().getName());
+        it.next();
+        System.out.println("Iterator Current: " + it.getCurrent().getName());
 
         System.out.println("=================");
     }
