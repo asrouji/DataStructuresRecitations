@@ -68,7 +68,23 @@ public class StudentLinkedList implements StudentList {
      * @param index position to remove Student at
      */
     public void removeAt(int index) {
-        throw new UnsupportedOperationException();
+        if (index < 0 || index >= this.size) {
+            throw new IllegalArgumentException();
+        }
+        Node current = this.head;
+        Node prev = null;
+        while (current != null && index > 0) {
+            prev = current;
+            current = current.next;
+            index--;
+        }
+        if (current == this.head) {
+            this.head = current.next;
+        }
+        if (prev != null) {
+            prev.next = current.next;
+        }
+        this.size--;
     }
 
     /**
@@ -94,7 +110,10 @@ public class StudentLinkedList implements StudentList {
      * @return Iterator on the calling StudentLinkedList
      */
     public Iterator getIterator() {
-        throw new UnsupportedOperationException();
+        if (this.size == 0) {
+            throw new IllegalStateException();
+        }
+        return new Iterator(this);
     }
 
     public class Iterator {
@@ -109,7 +128,8 @@ public class StudentLinkedList implements StudentList {
          * @param host StudentLinkedList to construct Iterator on
          */
         public Iterator(StudentLinkedList host) {
-            throw new UnsupportedOperationException();
+            this.host = host;
+            current = host.head;
         }
 
         /**
@@ -118,7 +138,7 @@ public class StudentLinkedList implements StudentList {
          * @return a reference to the Student at the current iterator position
          */
         public Student getCurrent() {
-            throw new UnsupportedOperationException();
+            return this.current.student;
         }
 
         /**
@@ -126,7 +146,7 @@ public class StudentLinkedList implements StudentList {
          * at the end
          */
         public void next() {
-            throw new UnsupportedOperationException();
+            current = (current.next == null) ? host.head : current.next;
         }
 
     }
