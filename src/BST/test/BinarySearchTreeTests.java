@@ -1,18 +1,10 @@
 package BST.test;
 
 import static org.junit.Assert.*;
-
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestWatcher;
-import org.junit.rules.Timeout;
-import org.junit.runner.Description;
 
 import BST.main.BinarySearchTree;
 import BST.main.BinaryTree;
-import java.util.*;
 
 public class BinarySearchTreeTests {
 
