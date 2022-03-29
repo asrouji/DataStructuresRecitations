@@ -1,4 +1,4 @@
-package main;
+package school.main;
 
 public class Person {
 

@@ -1,6 +1,6 @@
-package main;
+package school.main;
 
-import main.StudentLinkedList.Iterator;
+import school.main.StudentLinkedList.Iterator;
 
 public interface StudentList {
 
