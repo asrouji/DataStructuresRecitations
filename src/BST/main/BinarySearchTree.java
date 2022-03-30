@@ -76,15 +76,27 @@ public class BinarySearchTree implements BinaryTree {
     }
 
     private void preOrder(Node n) {
-        throw new UnsupportedOperationException();
+        if (n == null) { return; }
+        // Visit Behavior
+        System.out.print(n.data);
+        // Recurse Left
+        preOrder(n.left);
+        // Recurse Right
+        preOrder(n.right);
     }
 
     private void inOrder(Node n) {
-        throw new UnsupportedOperationException();
+        if (n == null) { return; }
+        inOrder(n.left);
+        System.out.print(n.data);
+        inOrder(n.right);
     }
 
     private void postOrder(Node n) {
-        throw new UnsupportedOperationException();
+        if (n == null) { return; }
+        postOrder(n.left);
+        postOrder(n.right);
+        System.out.println(n.data);
     }
 
     /**
