@@ -18,7 +18,28 @@ public class BinarySearchTree implements BinaryTree {
      * @param val the value to add
      */
     public void add(int val) {
-        throw new UnsupportedOperationException();
+        this.size++;
+        if (this.root == null) {
+            this.root = new Node(val);
+            return;
+        }
+        Node current = this.root;
+        while (current != null) {
+            if (val < current.data) {
+                // go left
+                if (current.left == null) {
+                    current.left = new Node(val);
+                    return;
+                }
+                current = current.left;
+            } else {
+                if (current.right == null) {
+                    current.right = new Node(val);
+                    return;
+                }
+                current = current.right;
+            }
+        }
     }
 
     /**
@@ -27,7 +48,16 @@ public class BinarySearchTree implements BinaryTree {
      * @param val the value to check
      */
     public boolean contains(int val) {
-        throw new UnsupportedOperationException();
+        return containsNode(val, this.root);
+    }
+
+    private boolean containsNode(int val, Node n) {
+        // Base Case
+        if (n == null) { return false; }
+        if (n.data == val) { return true; }
+        // Recursive Case
+        if (val < n.data) { return containsNode(val, n.left); }
+        return containsNode(val, n.right);
     }
 
     /**
@@ -36,7 +66,7 @@ public class BinarySearchTree implements BinaryTree {
      * @return the size of the BinarySearchTree
      */
     public int size() {
-        throw new UnsupportedOperationException();
+        return this.size;
     }
 
     public void traverseTree(String method) {
